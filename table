@@ -1,0 +1,61 @@
+User 用户列表
+    id
+    avatar
+    username
+    password
+
+BookAccount 账簿
+    id
+    user_id 用户ID
+    name
+    cover
+    remark
+    is_double 是否复式记账
+
+BillCurrency 账单货币
+    id
+    name
+    sort
+
+BillSubject 账单科目
+    id
+    book_account_id 账簿ID
+    bill_currency_id 货币
+    parent_id
+    type
+        asset 资产
+        liabilities 负债
+        income 收入
+        expenses 支出
+        equity 权益
+    balance 余额
+    name
+    cover
+    remark
+
+BillPayee 账单收款者
+    id
+    book_account_id 账簿ID
+    name
+    sort
+    remark
+
+BillList 账单列表
+    id
+    book_account_id 账簿ID
+    bill_payee_id 账单收款者ID
+    time_occurrence 时间
+    remark
+    files 文件列表
+        type
+            image
+        name
+        path
+
+BillInfo 账单详情
+    id
+    bill_list_id 账单列表ID
+    bill_subject_id 账单科目ID
+    current_bill_currency_id 当前货币
+    current_amount 当前金额
+    transform_amount 转换后金额
