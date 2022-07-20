@@ -14,6 +14,7 @@ BookAccount 账簿
 
 BillCurrency 账单货币
     id
+    user_id 用户ID
     name
     sort
 
