@@ -17,3 +17,4 @@
 - https://blog.zsxsoft.com/post/41
 - https://blog.stdioa.com/2020/09/using-beancount/
 - https://byvoid.com/zhs/blog/beancount-bookkeeping-2/
+- https://blog.kaaass.net/archives/1659

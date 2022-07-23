@@ -9,6 +9,9 @@ class Index extends Controller
 {
     public function start(Request $request)
     {
-        return config('app.name');
+        return view('web.index', [
+            'title'       => config('app.name'),
+            'description' => '记账',
+        ]);
     }
 }
