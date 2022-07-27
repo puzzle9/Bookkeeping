@@ -52,6 +52,7 @@ BillList 账单列表
             image
         name
         path
+    address 位置
 
 BillInfo 账单详情
     id

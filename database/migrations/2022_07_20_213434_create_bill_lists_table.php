@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->timestamp('time_occurrence');
             $table->string('remark')->nullable();
             $table->json('files')->nullable();
+            $table->json('address')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

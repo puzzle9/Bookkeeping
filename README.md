@@ -18,3 +18,5 @@
 - https://blog.stdioa.com/2020/09/using-beancount/
 - https://byvoid.com/zhs/blog/beancount-bookkeeping-2/
 - https://blog.kaaass.net/archives/1659
+- https://tsb2blog.com/bookkeepin
+- https://toshl.com/
