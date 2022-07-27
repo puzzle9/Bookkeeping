@@ -13,12 +13,30 @@ const router = createRouter({
         {
             path: '/',
             name: 'Index',
-            component: () => import('@wap/views/index.vue'),
+            redirect: '/bill/lists',
+            // component: () => import('@wap/views/index.vue'),
         },
         {
             path: '/sign',
             name: ROUTE_NAME_SIGN,
             component: () => import('@wap/views/sign.vue'),
+        },
+        {
+            path: '/bill',
+            name: 'Bill',
+            component: RouterComponent,
+            children: [
+                {
+                    path: 'lists',
+                    name: 'BillLists',
+                    component: () => import('@wap/views/bill/lists.vue'),
+                },
+                {
+                    path: 'createOrUpdate',
+                    name: 'BillCreateOrUpdate',
+                    component: () => import('@wap/views/bill/createOrUpdate.vue'),
+                },
+            ],
         },
     ],
 })
