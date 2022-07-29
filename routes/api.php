@@ -10,4 +10,8 @@ Route::prefix('/sign')->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('/file')->group(function () {
+        Route::post('/', 'File@upload');
+        Route::delete('/', 'File@delete');
+    });
 });
