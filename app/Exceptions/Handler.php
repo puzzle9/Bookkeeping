@@ -29,9 +29,7 @@ class Handler extends ExceptionHandler
      * @var array<int, string>
      */
     protected $dontFlash = [
-        'current_password',
         'password',
-        'password_confirmation',
     ];
 
     /**
@@ -43,5 +41,12 @@ class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
         });
+    }
+
+    protected function convertValidationExceptionToResponse(\Illuminate\Validation\ValidationException $e, $request)
+    {
+        return response()->json([
+            'message' => $e->getMessage(),
+        ], 422);
     }
 }
