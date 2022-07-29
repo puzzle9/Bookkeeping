@@ -9,7 +9,7 @@ class Index extends Controller
 {
     public function start(Request $request)
     {
-        return response()->json([
+        return self::success([
             'time' => now()->toDateTimeString(),
         ]);
     }

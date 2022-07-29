@@ -12,4 +12,17 @@ class Controller extends BaseController
     use AuthorizesRequests;
     use DispatchesJobs;
     use ValidatesRequests;
+
+    public static function failed($message)
+    {
+        return abort(422, $message);
+    }
+
+    public static function success($data = [], $message = 'success')
+    {
+        return response()->json([
+            'data'    => $data,
+            'message' => $message,
+        ]);
+    }
 }

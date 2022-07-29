@@ -9,7 +9,7 @@ class Model extends Info
 {
     use SoftDeletes;
 
-    protected $fillable = [];
+    protected $guarded = [];
 
     protected $hidden = [
         'deleted_at',
