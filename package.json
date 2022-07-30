@@ -5,15 +5,16 @@
     "build": "vite build"
   },
   "devDependencies": {
+    "@vicons/ionicons5": "^0.12.0",
     "@vitejs/plugin-vue": "^3.0.1",
     "laravel-vite-plugin": "^0.5.0",
+    "naive-ui": "^2.32.0",
     "stylus": "^0.58.1",
     "vite": "^3.0.0"
   },
   "dependencies": {
     "dayjs": "^1.11.4",
     "flyio": "^0.6.14",
-    "vant": "^4.0.0-beta.0",
     "vue": "^3.2.37",
     "vue-router": "4",
     "vuex": "4"

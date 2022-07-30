@@ -9,10 +9,12 @@ import store from '@wap/store'
 app.use(router)
 app.use(store)
 
-// vant
-import Vant from 'vant'
-import 'vant/lib/index.css'
+import naive from 'naive-ui'
 
-app.use(Vant)
+app.use(naive)
+
+import components from '@wap/components'
+
+app.use(components)
 
 app.mount('#app')

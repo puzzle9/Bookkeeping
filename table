@@ -1,6 +1,7 @@
 User 用户列表
     id
     avatar
+    email
     username
     password
 

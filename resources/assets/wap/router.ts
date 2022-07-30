@@ -1,8 +1,10 @@
+import store from '@wap/store'
+
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 import RouterComponent from '@wap/components/RouterComponent.vue'
 
-const ROUTE_NAME_SIGN = 'Sign'
+export const ROUTE_NAME_SIGN = 'Sign'
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -11,15 +13,16 @@ const router = createRouter({
     },
     routes: [
         {
+            path: '/sign',
+            name: ROUTE_NAME_SIGN,
+            component: () => import('@wap/views/sign.vue'),
+        },
+
+        {
             path: '/',
             name: 'Index',
             redirect: '/bill/lists',
             // component: () => import('@wap/views/index.vue'),
-        },
-        {
-            path: '/sign',
-            name: ROUTE_NAME_SIGN,
-            component: () => import('@wap/views/sign.vue'),
         },
         {
             path: '/bill',
@@ -39,6 +42,16 @@ const router = createRouter({
             ],
         },
     ],
+})
+
+router.beforeEach(async (to, from, next) => {
+    if (!store.state.token && to.name != ROUTE_NAME_SIGN) {
+        await router.push({
+            name: ROUTE_NAME_SIGN,
+        })
+    }
+
+    next()
 })
 
 export default router

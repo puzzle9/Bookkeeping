@@ -27,13 +27,16 @@ class Sign extends Controller
 
     public function reg(Request $request, User $user)
     {
+        $user_table = $user->getTable();
         $request->validate([
-            'username' => 'required|max:30|unique:' . $user->getTable(),
-            'password' => 'required|max:30',
+            'username' => 'bail|required|max:30|unique:' . $user_table,
+            'email'    => 'bail|required|email|max:50|unique:' . $user_table,
+            'password' => 'bail|required|max:30',
         ]);
 
         $user = User::create([
             'username' => $request->input('username'),
+            'email'    => $request->input('email'),
             'password' => Hash::make($request->input('password')),
         ]);
 
@@ -43,7 +46,8 @@ class Sign extends Controller
     public function token(User $user)
     {
         return self::success([
-            'token' => User::generateTokenByUser($user, 'sign'),
+            'username' => $user->username,
+            'token'    => User::generateTokenByUser($user, 'sign'),
         ]);
     }
 }

@@ -1,12 +1,13 @@
 <template>
     <div class="create">
         <div class="button">
-            <van-icon name="add-o" size="50" @click="toCreateOrUpdate()" />
+            <n-icon size="50" :component="AddCircleOutline" @click="toCreateOrUpdate()" />
         </div>
     </div>
 </template>
 <script lang="ts" setup>
     import { useRouter, useRoute } from 'vue-router'
+    import { AddCircleOutline } from '@vicons/ionicons5'
 
     const router = useRouter(),
         route = useRoute()

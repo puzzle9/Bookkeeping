@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
     protected function convertValidationExceptionToResponse(\Illuminate\Validation\ValidationException $e, $request)
     {
         return response()->json([
-            'message' => $e->getMessage(),
+            'message' => $e->validator->errors()->first(),
         ], 422);
     }
 }
