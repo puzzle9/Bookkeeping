@@ -14,4 +14,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/', 'File@upload');
         Route::delete('/', 'File@delete');
     });
+
+    Route::prefix('/book')->group(function () {
+        Route::prefix('/account')->group(function () {
+            Route::get('/', 'Book\Account@list');
+            Route::post('/', 'Book\Account@createOrUpdate');
+            Route::delete('/', 'Book\Account@delete');
+        });
+    });
 });

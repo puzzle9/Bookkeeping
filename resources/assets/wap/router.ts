@@ -21,11 +21,35 @@ const router = createRouter({
         {
             path: '/',
             name: 'Index',
-            redirect: '/bill/lists',
+            redirect: '/book/account/lists',
             // component: () => import('@wap/views/index.vue'),
         },
         {
-            path: '/bill',
+            path: '/book',
+            name: 'Book',
+            component: RouterComponent,
+            children: [
+                {
+                    path: 'account',
+                    name: 'BookAccount',
+                    component: RouterComponent,
+                    children: [
+                        {
+                            path: 'lists',
+                            name: 'BookAccountLists',
+                            component: () => import('@wap/views/book/account/lists.vue'),
+                        },
+                        {
+                            path: 'createOrUpdate',
+                            name: 'BookAccountCreateOrUpdate',
+                            component: () => import('@wap/views/book/account/createOrUpdate.vue'),
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            path: '/bill/:bill_id',
             name: 'Bill',
             component: RouterComponent,
             children: [

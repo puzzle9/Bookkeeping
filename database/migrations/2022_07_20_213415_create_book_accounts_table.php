@@ -25,7 +25,6 @@ return new class extends Migration {
             $table->index([
                 'user_id',
                 'name',
-                'remark',
             ], 'book_accounts_index');
         });
     }

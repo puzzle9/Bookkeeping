@@ -19,4 +19,15 @@ class Model extends Info
         'is_double' => 'boolean',
         'files'     => 'json',
     ];
+
+    // https://learnku.com/laravel/t/60910#reply202053
+    public function serializeDate(\DateTimeInterface $date): string
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
+
+    public function ScopeUserId($query, $user_id = null)
+    {
+        return $query->where('user_id', $user_id || User::getUserIdByAuth());
+    }
 }
