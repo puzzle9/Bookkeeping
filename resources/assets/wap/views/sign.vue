@@ -15,7 +15,7 @@
                 <n-auto-complete v-model:value="form_model.email" placeholder="找回密码、接收账单等" maxlength="50" :options="form_email_options" type="email" clearable />
             </n-form-item-row>
 
-            <n-button attr-type="submit" type="primary" block secondary strong :loading="form_loading" @click="formSubmit">{{ tabs[tab_value] }}</n-button>
+            <n-button attr-type="submit" type="info" block secondary strong :loading="form_loading" @click="formSubmit">{{ tabs[tab_value] }}</n-button>
         </n-form>
     </n-card>
 </template>
@@ -85,7 +85,7 @@
                     .then((res: any) => {
                         store.state.naive.message.success(is_sign_in ? `欢迎回来 ${res.username}` : '注册成功')
                         store.commit('setToken', res.token)
-                        router.push({
+                        router.replace({
                             name: 'Index',
                         })
                     })
