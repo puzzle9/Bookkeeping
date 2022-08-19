@@ -22,4 +22,8 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::delete('/', 'Book\Account@delete');
         });
     });
+
+    Route::prefix('/bill')->group(function () {
+        Route::get('/base', 'Bill\Index@base');
+    });
 });

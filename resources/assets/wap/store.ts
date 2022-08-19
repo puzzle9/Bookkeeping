@@ -13,6 +13,9 @@ const store = createStore({
             token: storage.storageTokenGet(),
             theme: storage.storageThemeGet(),
             base: {},
+            account: {
+                name: '账本',
+            },
         }
     },
     mutations: {
@@ -26,6 +29,9 @@ const store = createStore({
         },
         setBase(state, base) {
             state.base = base
+        },
+        setAccount(state, account) {
+            state.account = account
         },
     },
     actions: {

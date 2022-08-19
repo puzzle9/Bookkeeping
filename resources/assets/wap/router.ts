@@ -54,14 +54,14 @@ const router = createRouter({
             component: RouterComponent,
             children: [
                 {
-                    path: 'lists',
-                    name: 'BillLists',
-                    component: () => import('@wap/views/bill/lists.vue'),
+                    path: '',
+                    name: 'BillIndex',
+                    component: () => import('@wap/views/bill/index.vue'),
                 },
                 {
                     path: 'createOrUpdate',
                     name: 'BillCreateOrUpdate',
-                    component: () => import('@wap/views/bill/createOrUpdate.vue'),
+                    component: () => import('@wap/views/bill/lists/createOrUpdate.vue'),
                 },
             ],
         },

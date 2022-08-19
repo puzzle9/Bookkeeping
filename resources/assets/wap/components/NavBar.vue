@@ -2,6 +2,9 @@
     <n-card>
         <n-page-header :title="props.title" @back="router.back()">
             <template #back v-if="hiddenBack"></template>
+            <template #extra>
+                <slot name="extra"></slot>
+            </template>
         </n-page-header>
     </n-card>
 </template>

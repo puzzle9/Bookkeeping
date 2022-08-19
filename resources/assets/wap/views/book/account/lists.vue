@@ -1,7 +1,7 @@
 <template>
     <NavBar title="账本列表" hiddenBack></NavBar>
     <Layout :loading="loading">
-        <n-card v-for="data in datas" class="list" closable @close="accountDelete(data)" @click="toInfo(data.id)">
+        <n-card v-for="data in datas" class="list" closable @close="accountDelete(data)" @click="toInfo(data)">
             <template #header>
                 {{ data.name }}
             </template>
@@ -41,11 +41,14 @@
         })
     }
 
-    const toInfo = (bill_id) => {
+    const toInfo = (data) => {
+        store.commit('setAccount', {
+            name: data.name,
+        })
         router.push({
-            name: 'BillLists',
+            name: 'BillIndex',
             params: {
-                bill_id,
+                bill_id: data.id,
             },
         })
     }
