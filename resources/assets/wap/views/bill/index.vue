@@ -25,7 +25,7 @@
             ComponentSettings,
         },
         component_default = 'ComponentLists',
-        component_name = ref('ComponentLists')
+        component_name = ref('ComponentSettings')
 
     const toComponent = (name) => {
         component_name.value = component_name.value == name ? component_default : name

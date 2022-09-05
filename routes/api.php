@@ -23,7 +23,27 @@ Route::middleware('auth:sanctum')->group(function () {
         });
     });
 
-    Route::prefix('/bill')->group(function () {
+    Route::prefix('/bill/{bill_id}')->middleware('can:bill')->group(function () {
         Route::get('/base', 'Bill\Index@base');
+
+        Route::prefix('/setting')->group(function () {
+
+            Route::prefix('/payee')->group(function () {
+                Route::get('/', 'Bill\Setting\Payee@list');
+                Route::post('/', 'Bill\Setting\Payee@createOrUpdate');
+            });
+
+            Route::prefix('/currency')->group(function () {
+                Route::get('/', 'Bill\Setting\Currency@list');
+                Route::post('/', 'Bill\Setting\Currency@createOrUpdate');
+            });
+
+            Route::prefix('/subject')->group(function () {
+                Route::get('/parent', 'Bill\Setting\Subject@parent');
+                Route::get('/', 'Bill\Setting\Subject@list');
+                Route::post('/', 'Bill\Setting\Subject@createOrUpdate');
+                Route::delete('/', 'Bill\Setting\Subject@delete');
+            });
+        });
     });
 });

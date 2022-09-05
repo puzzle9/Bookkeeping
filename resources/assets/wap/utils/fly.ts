@@ -7,6 +7,17 @@ fly.config.timeout = 10000
 fly.config.baseURL = '/api'
 
 fly.interceptors.request.use((request) => {
+    let url = request.url,
+        params: any = router.currentRoute.value.params
+
+    // params = {
+    //     bill_id: 1,
+    // }
+    for (let param_name in params) {
+        url = url.replace(`{${param_name}}`, `${params[param_name]}`)
+    }
+
+    request.url = url
     request.headers.Authorization = `Bearer ${store.state.token}`
     return request
 })

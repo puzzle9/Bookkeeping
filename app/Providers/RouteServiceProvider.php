@@ -28,6 +28,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Route::pattern('bill_id', '\d+');
+
         $this->configureRateLimiting();
 
         $this->routes(function () {

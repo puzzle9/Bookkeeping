@@ -137,5 +137,6 @@ return [
         'type'     => '类别',
         'balance'  => '余额',
         'address'  => '位置',
+        'currency' => '货币',
     ],
 ];

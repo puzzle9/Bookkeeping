@@ -14,14 +14,14 @@ return new class extends Migration {
     {
         Schema::create('bill_currencies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('book_account_id');
             $table->string('name');
             $table->unsignedBigInteger('sort');
             $table->timestamps();
             $table->softDeletes();
 
             $table->index([
-                'user_id',
+                'book_account_id',
                 'name',
                 'sort',
             ], 'bill_currencies_index');

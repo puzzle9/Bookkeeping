@@ -15,9 +15,15 @@ BookAccount 账簿
 
 BillCurrency 账单货币
     id
-    user_id 用户ID
+    book_account_id 账簿ID
     name
     sort
+
+BillPayee 账单收款者
+    id
+    book_account_id 账簿ID
+    name
+    remark
 
 BillSubject 账单科目
     id
@@ -33,13 +39,6 @@ BillSubject 账单科目
     balance 余额
     name
     cover
-    remark
-
-BillPayee 账单收款者
-    id
-    book_account_id 账簿ID
-    name
-    sort
     remark
 
 BillList 账单列表

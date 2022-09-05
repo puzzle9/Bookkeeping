@@ -26,8 +26,18 @@ class Model extends Info
         return $date->format('Y-m-d H:i:s');
     }
 
+    public function ScopeSort($query)
+    {
+        return $query->orderBy('sort', 'asc');
+    }
+
     public function ScopeUserId($query, $user_id = null)
     {
-        return $query->where('user_id', $user_id || User::getUserIdByAuth());
+        return $query->where('user_id', $user_id ?: User::getUserIdByAuth());
+    }
+
+    public function ScopeBillId($query, $bill_id = null, $name = 'book_account_id')
+    {
+        return $query->where($name, $bill_id ?: request()->route()->parameter('bill_id'));
     }
 }
