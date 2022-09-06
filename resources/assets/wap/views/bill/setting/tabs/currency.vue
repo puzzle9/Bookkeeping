@@ -1,5 +1,5 @@
 <template>
-    <n-dynamic-input v-model:value="currency" show-sort-button placeholder="货币 如：人民币、积分等" :min="1" />
+    <n-dynamic-input v-model:value="currency" placeholder="货币 如：人民币" :min="1" :max="1" />
     <br />
     <n-button type="info" block @click="formSubmit">保存</n-button>
 </template>

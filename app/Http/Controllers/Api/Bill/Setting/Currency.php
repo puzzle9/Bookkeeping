@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\Bill\Setting;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\User;
 use App\Models\BillCurrency;
 
 class Currency extends Controller
@@ -18,6 +17,7 @@ class Currency extends Controller
 
     public function createOrUpdate(Request $request, $bill_id)
     {
+        // todo: 多币种记账
         $request->validate([
             'currency'   => [
                 'required',
