@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('bill_currency_id');
             $table->unsignedBigInteger('parent_id');
             $table->string('type');
-            $table->unsignedBigInteger('balance')->default(0);
+            $table->bigInteger('balance')->default(0);
             $table->string('name');
             $table->string('cover')->nullable();
             $table->string('remark')->nullable();

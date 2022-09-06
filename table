@@ -61,3 +61,4 @@ BillInfo 账单详情
     current_bill_currency_id 当前货币
     current_amount 当前金额
     transform_amount 转换后金额
+    remark

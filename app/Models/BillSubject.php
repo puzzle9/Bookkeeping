@@ -17,4 +17,9 @@ class BillSubject extends Model
         self::TYPE_EXPENSES    => '支出',
         // self::TYPE_EQUITY      => '权益',
     ];
+
+    public function currency()
+    {
+        return $this->belongsTo(BillCurrency::class, 'bill_currency_id', 'id')->select('id', 'name')->withTrashed();
+    }
 }

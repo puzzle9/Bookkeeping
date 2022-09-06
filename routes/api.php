@@ -25,6 +25,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::prefix('/bill/{bill_id}')->middleware('can:bill')->group(function () {
         Route::get('/base', 'Bill\Index@base');
+        Route::get('/', 'Bill\Index@list');
+        Route::get('/{info_id}', 'Bill\Index@info')->where('info_id', '\d+');
+        Route::post('/', 'Bill\Index@createOrUpdate');
+        Route::delete('/', 'Bill\Index@delete');
 
         Route::prefix('/setting')->group(function () {
 

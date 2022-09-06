@@ -17,15 +17,15 @@ return new class extends Migration {
             $table->unsignedBigInteger('bill_list_id');
             $table->unsignedBigInteger('bill_subject_id');
             $table->unsignedBigInteger('current_bill_currency_id');
-            $table->unsignedBigInteger('current_amount');
-            $table->unsignedBigInteger('transform_amount');
+            $table->bigInteger('current_amount');
+            $table->bigInteger('transform_amount')->nullable();
+            $table->string('remark')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
             $table->index([
                 'bill_list_id',
                 'bill_subject_id',
-                'current_bill_currency_id',
             ], 'bill_infos_index');
         });
     }
