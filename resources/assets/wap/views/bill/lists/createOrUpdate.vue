@@ -251,7 +251,7 @@
                 }
 
                 let amount = list_amount.value.toFixed(2)
-                if (amount != '0.00') {
+                if (parseFloat(amount) != 0) {
                     store.state.naive.message.error(`帐目不平衡 ￥${-amount}`)
                     return
                 }
