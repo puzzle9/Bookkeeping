@@ -8,12 +8,12 @@ class BillList extends Model
 {
     public function infos()
     {
-        return $this->hasMany(BillInfo::class, 'bill_list_id', 'id')->select('id', 'bill_list_id', 'bill_subject_id', 'current_bill_currency_id', 'current_amount', 'transform_amount', 'remark')->with('subject', 'currency')->latest('id');
+        return $this->hasMany(BillInfo::class, 'bill_list_id', 'id')->select('id', 'bill_list_id', 'bill_subject_id', 'current_bill_currency_id', 'current_amount', 'transform_amount', 'remark')->with('subject', 'currency')->oldest('id');
     }
 
     public function infosSimple()
     {
-        return $this->hasMany(BillInfo::class, 'bill_list_id', 'id')->select('id', 'bill_list_id', 'bill_subject_id', 'current_amount', 'remark')->latest('id');
+        return $this->hasMany(BillInfo::class, 'bill_list_id', 'id')->select('id', 'bill_list_id', 'bill_subject_id', 'current_amount', 'remark')->oldest('id');
     }
 
     public function payee()
