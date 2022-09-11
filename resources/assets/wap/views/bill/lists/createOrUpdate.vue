@@ -113,6 +113,7 @@
 <script lang="ts" setup>
     import fly from '@wap/utils/fly'
     import dayjs from '@wap/utils/dayjs'
+    import Compressor from 'compressorjs'
     import { ref, computed } from 'vue'
     import { useRouter, useRoute } from 'vue-router'
     import { useStore } from 'vuex'
@@ -135,7 +136,7 @@
             form_model_files.value = res.files.map((file) => {
                 return {
                     url: file,
-                    thumbnailUrl: `${file}?thumbnail`,
+                    // thumbnailUrl: `${file}?thumbnail`,
                     status: 'finished',
                 }
             })
@@ -185,22 +186,38 @@
             },
         },
         form_data_files_upload = (options: UploadCustomRequestOptions) => {
-            let formData = new FormData()
-            // @ts-ignore
-            formData.append('file', options.file.file)
-            let file = fly.post('/file', formData)
-            // @ts-ignore
-            file.engine.upload.onprogress = (e) => {
-                options.onProgress({
-                    percent: Number(((e.loaded / e.total) * 100).toFixed(0)),
-                })
-            }
+            new Compressor(options.file.file, {
+                strict: true,
+                checkOrientation: false,
+                // todo: 选项开启图片压缩功能
+                quality: 0.8,
+                // 1MB
+                convertSize: 1000000,
+                success(result: any) {
+                    let formData = new FormData()
+                    // @ts-ignore
+                    formData.append('file', result)
+                    let upload = fly.post('/file', formData)
+                    // @ts-ignore
+                    upload.engine.upload.onprogress = (e) => {
+                        options.onProgress({
+                            percent: Number(((e.loaded / e.total) * 100).toFixed(0)),
+                        })
+                    }
 
-            file.then((res: any) => {
-                form_model.value.files.push(res.path)
-                options.onFinish()
-            }).catch((err) => {
-                options.onError()
+                    upload
+                        .then((res: any) => {
+                            form_model.value.files.push(res.path)
+                            options.onFinish()
+                        })
+                        .catch((err) => {
+                            options.onError()
+                        })
+                },
+                error(error) {
+                    options.onError()
+                    console.log(error.message)
+                },
             })
         },
         form_data_files_delete = (options) => {

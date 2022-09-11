@@ -113,7 +113,8 @@
                     row.files = row.files.map((file) => {
                         return {
                             url: file,
-                            thumbnailUrl: `${file}?thumbnail`,
+                            // todo: 支持缩略图压缩
+                            // thumbnailUrl: `${file}?thumbnail`,
                             status: 'finished',
                         }
                     })
