@@ -190,9 +190,9 @@
                 strict: true,
                 checkOrientation: false,
                 // todo: 选项开启图片压缩功能
-                quality: 0.8,
-                // 1MB
-                convertSize: 1000000,
+                quality: 0.6,
+                // 500KB
+                convertSize: 500000,
                 success(result: any) {
                     let formData = new FormData()
                     // @ts-ignore
