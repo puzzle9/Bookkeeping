@@ -66,6 +66,7 @@ class Subject extends Controller
         if ($id && $parent_id) {
             BillSubject::BillId($bill_id)->where('parent_id', $id)->update([
                 'parent_id' => $parent_id,
+                'type'      => $request->input('type'),
             ]);
         }
 
