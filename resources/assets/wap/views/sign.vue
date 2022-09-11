@@ -39,9 +39,9 @@
 
     const form: any = ref('form'),
         form_model = ref({
-            username: 'null',
-            password: 'null',
-            email: 'ha@a.com',
+            username: null,
+            password: null,
+            email: '',
         }),
         form_rules = {
             username: {
