@@ -17,7 +17,7 @@ class Sign extends Controller
             'password' => 'required',
         ]);
 
-        $user = User::select('id', 'password')->where('username', $request->input('username'))->first();
+        $user = User::select('id', 'username', 'password')->where('username', $request->input('username'))->first();
         if (!$user || !Hash::check($request->input('password'), $user->password)) {
             return self::failed('用户名或密码错误');
         }
