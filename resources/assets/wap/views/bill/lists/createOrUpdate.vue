@@ -221,8 +221,10 @@
             })
         },
         form_data_files_delete = (options) => {
-            // todo: 文件删除逻辑
-            return true
+            let index = options.fileList.map((file) => file.url).indexOf(options.file.url)
+            form_model.value.files.splice(index, 1)
+
+            // todo: 文件后台删除逻辑
         },
         // https://stackoverflow.com/a/16751601/6686061
         list_amount = computed(() => form_model.value.lists.map((row) => row.current_amount).reduce((sum, value) => sum + value, 0)),
