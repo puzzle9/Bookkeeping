@@ -77,7 +77,7 @@
         amount = computed(() =>
             data.value
                 .map((row) => row.amount)
-                .reduce((sum, value) => sum + value, 0)
+                .reduce((sum, value) => sum + parseFloat(value), 0)
                 .toFixed(2),
         ),
         getData = () => {

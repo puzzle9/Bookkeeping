@@ -230,7 +230,7 @@
             form_model.value.lists.push({
                 bill_subject_id: null,
                 // current_bill_currency_id: null,
-                current_amount: list_amount.value ? -list_amount.value : null,
+                current_amount: list_amount.value ? -list_amount.value.toFixed(2) : null,
                 // transform_amount: null,
                 remark: null,
             })
@@ -250,8 +250,9 @@
                     return
                 }
 
-                if (list_amount.value) {
-                    store.state.naive.message.error(`帐目不平衡 ￥${-list_amount.value.toFixed(2)}`)
+                let amount = list_amount.value.toFixed(2)
+                if (amount != '0.00') {
+                    store.state.naive.message.error(`帐目不平衡 ￥${-amount}`)
                     return
                 }
 

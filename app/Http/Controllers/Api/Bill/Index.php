@@ -158,7 +158,7 @@ class Index extends Controller
                 'payee'           => $row->payee->name ?? null,
                 'files'           => $row->files,
                 'remark'          => $row->remark,
-                'amount'          => array_sum($amounts),
+                'amount'          => number_format(array_sum($amounts), 2, null, ''),
                 'infos'           => $infos,
             ];
         });
