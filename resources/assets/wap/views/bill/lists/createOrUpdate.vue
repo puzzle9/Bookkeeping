@@ -28,7 +28,7 @@
             </n-form-item>
 
             <n-form-item-row label="附件">
-                <n-upload :default-file-list="form_model_files" list-type="image-card" :max="3" accept="image/*" :custom-request="form_data_files_upload" @remove="form_data_files_delete">
+                <n-upload :default-file-list="form_model_files" list-type="image-card" :max="3" accept="image/jpg,image/jpeg,image/png" :custom-request="form_data_files_upload" @remove="form_data_files_delete">
                     点击上传
                 </n-upload>
             </n-form-item-row>
